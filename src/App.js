@@ -1,5 +1,7 @@
 import React from 'react';
-import { Statistics } from './components/Widget/Statistics';
+import Statistics from './components/Statistics';
+import FeedbackOptions from './components/FeedbackOptions';
+import Section from './components/Section';
 class App extends React.Component {
   static defaultProps = {};
 
@@ -26,14 +28,21 @@ class App extends React.Component {
     const { handleIncrement, countTotalFeedbacks, countPositiveFeedbackPercentage } = this;
     return (
       <>
-        <Statistics
-          good={good}
-          neutral={neutral}
-          bad={bad}
-          handleIncrement={handleIncrement}
-          countTotalFeedbacks={countTotalFeedbacks}
-          countPositiveFeedbackPercentage={countPositiveFeedbackPercentage}
-        />
+        <Section title="Please leave feedback">
+          <FeedbackOptions
+            // options={ }
+            onLeaveFeedback={handleIncrement}
+          />
+        </Section>
+        <Section title="Statistics">
+          <Statistics
+            good={good}
+            neutral={neutral}
+            bad={bad}
+            countTotalFeedbacks={countTotalFeedbacks}
+            countPositiveFeedbackPercentage={countPositiveFeedbackPercentage}
+          />
+        </Section>
       </>
     );
   }

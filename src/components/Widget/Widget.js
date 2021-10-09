@@ -24,18 +24,19 @@ class Widget extends React.Component {
 
   render() {
     const { good, neutral, bad } = this.state;
+    const { handleIncrement, countTotalFeedbacks, countPositiveFeedbackPercentage } = this;
     return (
       <>
         <div className={s.container}>
           <p className={s.title}>Please leave feedback</p>
           <div className={s.bottons}>
-            <button onClick={() => this.handleIncrement('good')} type="button">
+            <button onClick={() => handleIncrement('good')} type="button">
               Good
             </button>
-            <button onClick={() => this.handleIncrement('neutral')} type="button">
+            <button onClick={() => handleIncrement('neutral')} type="button">
               Neutral
             </button>
-            <button onClick={() => this.handleIncrement('bad')} type="button">
+            <button onClick={() => handleIncrement('bad')} type="button">
               Bad
             </button>
           </div>
@@ -43,10 +44,8 @@ class Widget extends React.Component {
           <p>Good: {good}</p>
           <p>Neutral: {neutral}</p>
           <p>Bad: {bad}</p>
-          <p>Total: {this.countTotalFeedbacks()}</p>
-          <p>
-            Positive feedbacks: {this.countPositiveFeedbackPercentage(this.countTotalFeedbacks())} %
-          </p>
+          <p>Total: {countTotalFeedbacks()}</p>
+          <p>Positive feedbacks: {countPositiveFeedbackPercentage(countTotalFeedbacks())} %</p>
         </div>
       </>
     );

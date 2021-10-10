@@ -1,8 +1,8 @@
-import React from 'react';
+import { Component } from 'react';
 import Statistics from './components/Statistics';
 import FeedbackOptions from './components/FeedbackOptions';
 import Section from './components/Section';
-class App extends React.Component {
+class App extends Component {
   static defaultProps = {};
 
   static propTypes = {};
@@ -29,10 +29,7 @@ class App extends React.Component {
     return (
       <>
         <Section title="Please leave feedback">
-          <FeedbackOptions
-            // options={ }
-            onLeaveFeedback={handleIncrement}
-          />
+          <FeedbackOptions options={['good', 'neutral', 'bad']} onLeaveFeedback={handleIncrement} />
         </Section>
         <Section title="Statistics">
           <Statistics

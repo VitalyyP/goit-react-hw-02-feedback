@@ -1,5 +1,6 @@
 import s from './Statistics.module.css';
 import NotificationMessage from '../NotificationMessage';
+import PropTypes from 'prop-types';
 
 export default function Statistics({
   good,
@@ -12,11 +13,13 @@ export default function Statistics({
     <>
       {countTotalFeedbacks() > 0 ? (
         <>
-          <p>Good: {good}</p>
-          <p>Neutral: {neutral}</p>
-          <p>Bad: {bad}</p>
-          <p>Total: {countTotalFeedbacks()}</p>
-          <p>Positive feedbacks: {countPositiveFeedbackPercentage(countTotalFeedbacks())} %</p>
+          <p className={s.text}>Good: {good}</p>
+          <p className={s.text}>Neutral: {neutral}</p>
+          <p className={s.text}>Bad: {bad}</p>
+          <p className={s.text}>Total: {countTotalFeedbacks()}</p>
+          <p className={s.text}>
+            Positive feedbacks: {countPositiveFeedbackPercentage(countTotalFeedbacks())} %
+          </p>
         </>
       ) : (
         <NotificationMessage />
@@ -24,3 +27,11 @@ export default function Statistics({
     </>
   );
 }
+
+Statistics.propTypes = {
+  good: PropTypes.number,
+  neutral: PropTypes.number,
+  bad: PropTypes.number,
+  countTotalFeedbacks: PropTypes.func,
+  countPositiveFeedbackPercentage: PropTypes.func,
+};

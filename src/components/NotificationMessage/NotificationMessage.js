@@ -1,5 +1,5 @@
 import s from './NotificationMessage.module.css';
 
 export default function NotificationMessage() {
-  return <p>No feedback given</p>;
+  return <p className={s.text}>No feedback given</p>;
 }
